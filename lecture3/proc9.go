@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	var k, d int
@@ -12,5 +15,13 @@ func main() {
 	}
 }
 func AddLeftDigit(k, d *int) {
-	*k = *k + *d*10
+	var cnt int
+	s := *k
+	for i := s; i >= 1; i /= 10 {
+		*k = 0
+		cnt++
+	}
+	var p float64
+	p = math.Pow(10, float64(cnt))
+	*k = int(p)**d + s
 }
